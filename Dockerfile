@@ -45,9 +45,8 @@ WORKDIR /var/www/vcard
 # Copy source codes
 COPY . ./
 
-# Install and run Composer
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
-RUN composer install
 
 # Install supervisor
 RUN yum -y install supervisor
