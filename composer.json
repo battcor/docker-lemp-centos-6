@@ -1,0 +1,19 @@
+{
+  "name": "LEMP-CENTOS-6",
+  "description": "LEMP stack on CentOS 6",
+  "version": "1.0.0",
+  "license": "MIT",
+  "config": {
+    "vendor-dir": "./modules",
+    "bin": [
+      "./modules/bin"
+    ],
+    "store-auths": true
+  },
+  "require": {
+    "php": ">=5.4",
+    "phpunit/phpunit": "^5.7",
+    "robmorgan/phinx": "^0.8.1",
+    "zircote/swagger-php": "^2.0"
+  }
+}

@@ -3,6 +3,10 @@
 #
 FROM centos:6
 
+# ARGS
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+
 RUN yum -y install epel-release
 RUN yum -y install wget
 RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
@@ -47,6 +51,7 @@ COPY . ./
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
+RUN composer install
 
 # Install supervisor
 RUN yum -y install supervisor
