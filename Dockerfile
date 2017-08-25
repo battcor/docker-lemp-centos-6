@@ -44,9 +44,9 @@ RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.
 RUN unzip awscli-bundle.zip
 RUN ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
-aws s3 configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-aws s3 configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-aws s3 configure set region $AWS_DEFAULT_REGION
+RUN aws s3 configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+RUN aws s3 configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+RUN aws s3 configure set region $AWS_DEFAULT_REGION
 
 # Set the working directory
 WORKDIR /var/www/html
