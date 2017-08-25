@@ -44,7 +44,7 @@ RUN unzip awscli-bundle.zip
 RUN ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
 # Set the working directory
-WORKDIR /var/www/vcard
+WORKDIR /var/www/html
 
 # Copy source codes
 COPY . ./
