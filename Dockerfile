@@ -43,7 +43,7 @@ RUN aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID && \
 
 COPY settings/phalcon.so /usr/lib64/php/modules
 COPY settings/supervisord.conf /etc
-COPY settings/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY settings/default.conf /etc/nginx/conf.d/default.conf
 COPY public/index.php /var/www/html/public
 
 WORKDIR /var/www/html
