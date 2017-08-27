@@ -24,31 +24,17 @@ RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.
     ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
-ENV AWS_ACCESS_KEY_ID=USER_ID
-ENV AWS_SECRET_ACCESS_KEY=ACCESS_KEY
-ENV AWS_DEFAULT_REGION=REGION
-
-ENV MYSQL_DATABASE=test
-ENV MYSQL_USER=root
-ENV MYSQL_PASSWORD=password
-ENV MYSQL_ROOT_PASSWORD=password
-
-RUN aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID && \
-    aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY && \
-    aws configure set default.region $AWS_DEFAULT_REGION && \
-    chkconfig supervisord on && \
+RUN chkconfig supervisord on && \
     echo -e "extension=phalcon.so" > /etc/php.d/phalcon.ini && \
     echo -e "short_open_tag=On" > /etc/php.d/shortopentags.ini && \
     echo -e "date.timezone=\"America/New_York\"" > /etc/php.d/timezone.ini
 
-COPY settings/phalcon.so /usr/lib64/php/modules
-COPY settings/supervisord.conf /etc
-COPY settings/default.conf /etc/nginx/conf.d/default.conf
-COPY public/index.php /var/www/html/public
+COPY files/phalcon.so /usr/lib64/php/modules
+COPY files/supervisord.conf /etc
 
 WORKDIR /var/www/html
 
-CMD ["sh","scripts/start.sh"]
+CMD ["sh", "start.sh"]
 
 EXPOSE 80
 EXPOSE 443
