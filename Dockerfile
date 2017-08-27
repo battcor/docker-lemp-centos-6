@@ -29,9 +29,6 @@ RUN chkconfig supervisord on && \
     echo -e "short_open_tag=On" > /etc/php.d/shortopentags.ini && \
     echo -e "date.timezone=\"America/New_York\"" > /etc/php.d/timezone.ini
 
-COPY files/phalcon.so /usr/lib64/php/modules
-COPY files/supervisord.conf /etc
-
 WORKDIR /var/www/html
 
 CMD ["sh", "start.sh"]
