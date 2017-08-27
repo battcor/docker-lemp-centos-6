@@ -13,7 +13,8 @@
 
 # Quickstart
 
-```git clone https://github.com/battcor/lemp-centos-6
+```
+git clone https://github.com/battcor/lemp-centos-6
 cd lemp-centos-6/
 docker build -t battcor/lemp-centos-6:latest .
 docker run \
@@ -30,7 +31,8 @@ Then, open http://127.0.0.1:8080 in your browser
 
 Same steps above, except for `docker run`.
 
-```docker run \
+```
+docker run \
     -v $(pwd)/html:/var/www/html \
     -v $(pwd)/files/default.conf:/etc/nginx/conf.d/default.conf \
     -v $(pwd)/files/supervisord.conf:/etc/supervisord.conf \
