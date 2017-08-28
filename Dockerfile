@@ -24,8 +24,14 @@ RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.
     ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
+RUN git clone git://github.com/phalcon/cphalcon.git && \
+    cd cphalcon/ && \
+    git checkout tags/v3.2.2 && \
+    cd build && \
+    ./install && \
+    echo -e "extension=phalcon.so" > /etc/php.d/phalcon.ini
+
 RUN chkconfig supervisord on && \
-    echo -e "extension=phalcon.so" > /etc/php.d/phalcon.ini && \
     echo -e "short_open_tag=On" > /etc/php.d/shortopentags.ini && \
     echo -e "date.timezone=\"America/New_York\"" > /etc/php.d/timezone.ini
 
