@@ -4,7 +4,7 @@ MAINTAINER Battcor <battcor@gmail.com>
 
 WORKDIR /tmp
 
-RUN yum -y install epel-release wget && \
+RUN yum -y install epel-release wget gcc && \
     wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm && \
     wget https://centos6.iuscommunity.org/ius-release.rpm && \
     rpm -Uvh ius-release*.rpm && \
